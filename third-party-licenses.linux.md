@@ -13,7 +13,7 @@ Some packages may only be included on certain architectures or operating systems
 - [cloud.google.com/go/auth/oauth2adapt](https://pkg.go.dev/cloud.google.com/go/auth/oauth2adapt) ([Apache-2.0](https://github.com/googleapis/google-cloud-go/blob/auth/oauth2adapt/v0.2.8/auth/oauth2adapt/LICENSE))
 - [cloud.google.com/go/compute/metadata](https://pkg.go.dev/cloud.google.com/go/compute/metadata) ([Apache-2.0](https://github.com/googleapis/google-cloud-go/blob/compute/metadata/v0.7.0/compute/metadata/LICENSE))
 - [cloud.google.com/go/iam](https://pkg.go.dev/cloud.google.com/go/iam) ([Apache-2.0](https://github.com/googleapis/google-cloud-go/blob/iam/v1.5.2/iam/LICENSE))
-- [cloud.google.com/go/longrunning](https://pkg.go.dev/cloud.google.com/go/longrunning) ([Apache-2.0](Unknown))
+- [cloud.google.com/go/longrunning](https://pkg.go.dev/cloud.google.com/go/longrunning) ([Apache-2.0](https://github.com/googleapis/google-cloud-go/blob/longrunning/v0.6.7/longrunning/LICENSE))
 - [cloud.google.com/go/monitoring](https://pkg.go.dev/cloud.google.com/go/monitoring) ([Apache-2.0](https://github.com/googleapis/google-cloud-go/blob/monitoring/v1.24.2/monitoring/LICENSE))
 - [cloud.google.com/go/spanner](https://pkg.go.dev/cloud.google.com/go/spanner) ([Apache-2.0](https://github.com/googleapis/google-cloud-go/blob/spanner/v1.82.0/spanner/LICENSE))
 - [cloud.google.com/go/storage](https://pkg.go.dev/cloud.google.com/go/storage) ([Apache-2.0](https://github.com/googleapis/google-cloud-go/blob/storage/v1.55.0/storage/LICENSE))
