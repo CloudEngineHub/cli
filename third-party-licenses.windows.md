@@ -165,7 +165,7 @@ Some packages may only be included on certain architectures or operating systems
 - [github.com/pelletier/go-toml/v2](https://pkg.go.dev/github.com/pelletier/go-toml/v2) ([MIT](https://github.com/pelletier/go-toml/blob/v2.2.4/LICENSE))
 - [github.com/pkg/errors](https://pkg.go.dev/github.com/pkg/errors) ([BSD-2-Clause](https://github.com/pkg/errors/blob/v0.9.1/LICENSE))
 - [github.com/pmezard/go-difflib/difflib](https://pkg.go.dev/github.com/pmezard/go-difflib/difflib) ([BSD-3-Clause](https://github.com/pmezard/go-difflib/blob/5d4384ee4fb2/LICENSE))
-- [github.com/rivo/tview](https://pkg.go.dev/github.com/rivo/tview) ([MIT](https://github.com/rivo/tview/blob/a4a78f1e05cb/LICENSE.txt))
+- [github.com/rivo/tview](https://pkg.go.dev/github.com/rivo/tview) ([MIT](https://github.com/rivo/tview/blob/v0.42.0/LICENSE.txt))
 - [github.com/rivo/uniseg](https://pkg.go.dev/github.com/rivo/uniseg) ([MIT](https://github.com/rivo/uniseg/blob/v0.4.7/LICENSE.txt))
 - [github.com/rodaine/table](https://pkg.go.dev/github.com/rodaine/table) ([MIT](https://github.com/rodaine/table/blob/v1.3.0/license))
 - [github.com/russross/blackfriday/v2](https://pkg.go.dev/github.com/russross/blackfriday/v2) ([BSD-2-Clause](https://github.com/russross/blackfriday/blob/v2.1.0/LICENSE.txt))
