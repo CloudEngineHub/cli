@@ -2,7 +2,7 @@ module github.com/cli/cli/v2
 
 go 1.25.0
 
-toolchain go1.25.4
+toolchain go1.25.5
 
 require (
 	github.com/AlecAivazis/survey/v2 v2.3.7
@@ -38,7 +38,7 @@ require (
 	github.com/mattn/go-colorable v0.1.14
 	github.com/mattn/go-isatty v0.0.20
 	github.com/mgutz/ansi v0.0.0-20200706080929-d51e80ef957d
-	github.com/microsoft/dev-tunnels v0.1.13
+	github.com/microsoft/dev-tunnels v0.1.19
 	github.com/muhammadmuzzammil1998/jsonc v1.0.0
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/rivo/tview v0.42.0
