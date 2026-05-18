@@ -7,6 +7,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/cli/cli/v2/internal/gh/ghtelemetry"
 	"github.com/cli/cli/v2/utils"
 	ghAPI "github.com/cli/go-gh/v2/pkg/api"
 	ghauth "github.com/cli/go-gh/v2/pkg/auth"
@@ -26,6 +27,7 @@ type HTTPClientOptions struct {
 	LogColorize        bool
 	LogVerboseHTTP     bool
 	SkipDefaultHeaders bool
+	TelemetryDisabler  ghtelemetry.Disabler
 }
 
 func NewHTTPClient(opts HTTPClientOptions) (*http.Client, error) {
@@ -74,6 +76,13 @@ func NewHTTPClient(opts HTTPClientOptions) (*http.Client, error) {
 		client.Transport = AddAuthTokenHeader(client.Transport, opts.Config)
 	}
 
+	if opts.TelemetryDisabler != nil {
+		client.Transport = telemetryDisablerTransport{
+			wrappedTransport:  client.Transport,
+			telemetryDisabler: opts.TelemetryDisabler,
+		}
+	}
+
 	return client, nil
 }
 
@@ -83,7 +92,7 @@ func NewCachedHTTPClient(httpClient *http.Client, ttl time.Duration) *http.Clien
 	return &newClient
 }
 
-// AddCacheTTLHeader adds an header to the request telling the cache that the request
+// AddCacheTTLHeader adds a header to the request telling the cache that the request
 // should be cached for a specified amount of time.
 func AddCacheTTLHeader(rt http.RoundTripper, ttl time.Duration) http.RoundTripper {
 	return &funcTripper{roundTrip: func(req *http.Request) (*http.Response, error) {
@@ -146,4 +155,16 @@ func getHost(r *http.Request) string {
 		return r.Host
 	}
 	return r.URL.Host
+}
+
+type telemetryDisablerTransport struct {
+	wrappedTransport  http.RoundTripper
+	telemetryDisabler ghtelemetry.Disabler
+}
+
+func (t telemetryDisablerTransport) RoundTrip(req *http.Request) (*http.Response, error) {
+	if ghauth.IsEnterprise(getHost(req)) {
+		t.telemetryDisabler.Disable()
+	}
+	return t.wrappedTransport.RoundTrip(req)
 }
