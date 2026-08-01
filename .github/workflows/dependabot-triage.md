@@ -1,11 +1,11 @@
 ---
 description: |
   Agentic triage for open Dependabot pull requests. Runs on a schedule as a
-  reconciler: for each open PR authored by dependabot[bot] it assesses a
-  merge-confidence level (High / Medium / Low) with rationale and key facts,
-  validating the change against the upstream source diff. It posts exactly one
-  comment per PR head commit and re-comments only when that commit changes. It
-  is advisory only and NEVER merges, approves, or labels a PR.
+  reconciler: for each open PR authored by dependabot[bot] it emits a
+  recommendation (Merge / Review before merging / Do not merge) plus confidence
+  (High / Medium / Low), validating the change against the upstream source diff.
+  It posts exactly one comment per PR head commit and re-comments only when that
+  commit changes. It is advisory only and NEVER merges, approves, or labels a PR.
 
 # NOTE: the dedup marker is deliberately visible markdown, not an HTML comment.
 # Two separate gh-aw layers strip HTML comments: the prompt renderer erases them
@@ -35,7 +35,7 @@ description: |
 # tool, or a secret in the agent job's environment - re-evaluate both. The
 # scheduled trigger does not make additions safe by itself.
 on:
-  schedule: every 6h # fuzzy: compiler scatters the minute to avoid load spikes
+  schedule: every 1h # fuzzy: compiler scatters the minute to avoid load spikes
   workflow_dispatch:
     inputs:
       pr_number:
@@ -104,8 +104,8 @@ reconcile protocol precisely:
    **Skip and post nothing** if the marked SHA equals the current head SHA
    (already reviewed this exact state). Never treat another author's comment as
    your state.
-4. Otherwise assess merge confidence (including validating against the upstream
-   source diff) and post exactly one comment.
+4. Otherwise decide the recommendation and confidence (including validating
+   against the upstream source diff) and post exactly one comment.
 
 ## Step 4: Post the assessment
 
